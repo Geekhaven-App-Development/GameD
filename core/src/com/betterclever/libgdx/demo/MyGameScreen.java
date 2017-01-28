@@ -1,6 +1,8 @@
 package com.betterclever.libgdx.demo;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -14,7 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  * Created by betterclever on 1/28/2017.
  */
 
-public class MyGameScreen implements Screen {
+public class MyGameScreen extends InputAdapter implements Screen {
 	
 	ExtendViewport viewport;
 	ShapeRenderer shapeRenderer;
@@ -28,7 +30,8 @@ public class MyGameScreen implements Screen {
 		
 		balls = new Array<Ball>();
 		
-		for (int i = 0; i < 20; i++) {
+		Gdx.input.setInputProcessor(this);
+		for (int i = 0; i < 5; i++) {
 			balls.add(new Ball(shapeRenderer));
 		}
 	}
@@ -70,5 +73,14 @@ public class MyGameScreen implements Screen {
 	@Override
 	public void dispose() {
 		
+	}
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		if(keycode == Input.Keys.SPACE){
+			balls.add(new Ball(shapeRenderer));
+		}
+		
+		return super.keyDown(keycode);
 	}
 }
