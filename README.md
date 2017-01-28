@@ -14,7 +14,8 @@
     * On Windows: `gradlew.bat desktop:run`
     * On macOS/Linux: `./gradlew desktop:run`
 6. The Desktop Version of Game should show up.
-7. Try running on Android once.
+7. If you see a growing disc on the game screen , set up is complete.
+8. Try running on Android once.
 
 If you face any error, please contact here at Gitter ChatRoom of ZapTap under OpenCode. 
 https://gitter.im/opencode2017/ZapTap
