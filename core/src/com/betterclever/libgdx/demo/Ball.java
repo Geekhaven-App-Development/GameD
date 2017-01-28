@@ -1,5 +1,6 @@
 package com.betterclever.libgdx.demo;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -14,15 +15,18 @@ public class Ball {
 	float radius = 30;
 	Vector2 position;
 	Vector2 velocity;
+	Color color;
 	
 	public Ball(ShapeRenderer renderer) {
 		this.renderer = renderer;
+		color = new Color(MathUtils.random(0.3f,0.8f),MathUtils.random(0.3f,0.8f),MathUtils.random(0.3f,0.8f),1);
 		position = new Vector2(Constants.WORLD_WIDTH/2,Constants.WORLD_HEIGHT/2);
 		velocity = new Vector2(MathUtils.random(-1000,1000), MathUtils.random(-1000,1000));
 	}
 	
 	public void render(float delta){
 		renderer.begin(ShapeRenderer.ShapeType.Filled);
+		renderer.setColor(color);
 		renderer.circle(position.x, position.y,radius,256);
 		renderer.end();
 		
