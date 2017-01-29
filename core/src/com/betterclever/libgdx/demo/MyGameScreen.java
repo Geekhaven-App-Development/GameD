@@ -48,6 +48,18 @@ public class MyGameScreen extends InputAdapter implements Screen {
 		for(Ball b: balls){
 			b.render(delta);
 		}
+		
+		for (int i = 0; i < balls.size; i++) {
+			for (int j = i+1; j < balls.size ; j++) {
+				Ball b1 = balls.get(i);
+				Ball b2 = balls.get(j);
+				if(b1.bounds.overlaps(b2.bounds)){
+					Vector2 temp = b1.velocity.cpy();
+					b1.velocity = b2.velocity;
+					b2.velocity = temp;
+				}
+			}
+		}
 	}
 	
 	@Override
